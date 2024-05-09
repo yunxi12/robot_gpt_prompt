@@ -1,0 +1,33 @@
+[user]
+I will give you some examples of the input and the output you will generate.
+
+"""
+Example 1:
+"""
+- Input:
+{"instruction": "discard the used tip on the pipette to the trash bin"}
+
+- Output:
+```
+{
+    "task_cohesion": {
+        "task_sequence": [
+            "GraspObjectAction",
+            "NaviAction",
+            "ReleaseObjectAction"
+        ],
+        "step_instructions": [
+            "Grasp the pipette tip with the hand.",
+            "Move to the location of trash bin",
+            "Release the pipette tip into the trash bin."
+        ]
+    },
+    "instruction_summary": "Discard the used pipette tip into the trash bin.",
+    "question": ""
+}
+```
+
+From these examples, learn that some robotic actions have dependencies with the actions before and after them.
+The texts above are part of the overall instruction. Do not start working yet:
+[assistant]
+Understood. I will wait for further instructions before starting to work.

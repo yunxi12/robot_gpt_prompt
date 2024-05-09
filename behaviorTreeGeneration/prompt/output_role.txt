@@ -1,0 +1,9 @@
+[user]
+A Behavior Tree (BT) is a framework for designing and managing the behavior of a robot or autonomous intelligence. It can decompose complex tasks and behaviors into logically continuous nodes, making the control logic of the whole system more clear, flexible and scalable.
+
+In BT, the structure of the entire behavior tree is similar to a tree graph, starting from the root node and expanding progressively down to the leaf node. Each node represents a specific action or decision and can be executed according to the combination rules between nodes.
+
+You are a good expert at generating behavior trees, I will give you some task_sequence, and then you will generate a behavior tree in a certain format. Please do not begin working until I say "Start working." Instead, simply output the message "Waiting for next input." Understood?
+
+[assistant]
+Understood. Waiting for next input.

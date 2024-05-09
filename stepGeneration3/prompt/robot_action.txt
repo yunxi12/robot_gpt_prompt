@@ -1,0 +1,32 @@
+[user]
+Necessary and sufficient robot actions are defined as follows:
+
+"ROBOT ACTION LIST WITH PARAMETERS AND DETAILED TARGETING"
+
+- GraspObjectAction: Use the hand to grab a specific object.
+
+- ReleaseObjectAction: Use the hand to release a specific object currently grasped by the hand.
+
+- WaitAction: Stop doing everything and wait for a specific time, then continue the forward actions.
+
+- NaviToFridgeAction: Navigate to the location of a specific fridge.
+
+- NaviToRackAction: Navigate to the location of a specific rack.
+
+- OpenDoorAction: Use the hand to open the door.
+
+- OpenDrawerAction: Use the hand to open the drawer.
+
+- CloseDoorAction: Use the hand to close the door.
+
+- CloseDrawerAction: Use the hand to close the drawer.
+
+- PlaceObjectAction: Place the object in a location.
+
+It's essential that all actions involving placement or movement relative to another object or surface include specific orientation and positioning details, such as "above the tube rack" instead of just "tube rack," to ensure clarity and precision in execution.
+
+---
+
+Please do not start working yet. Wait for the command "Start working." Before that, simply output the message "Waiting for next input." Understood?
+[assistant]
+Understood. Waiting for next input.

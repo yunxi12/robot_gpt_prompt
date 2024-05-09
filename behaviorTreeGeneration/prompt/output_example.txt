@@ -1,0 +1,33 @@
+[user]
+I will give you some examples of the input and the output you will generate.
+Example 1 is a simple example of a behavior tree.
+
+Example 1:
+"""
+ <root BTCPP_format="4" main_tree_to_execute="main_tree">
+     <BehaviorTree ID="main_Tree">
+        <Sequence name="root_sequence">
+           <Action ID="SaySomething"   name="action_hello" message="Hello"/>
+           <Action ID="OpenGripper"    name="open_gripper"/>
+           <Action ID="ApproachObject" name="approach_object"/>
+           <Action ID="CloseGripper"   name="close_gripper"/>
+        </Sequence>
+     </BehaviorTree>
+ </root>
+"""
+The tick operation is the core operation of the behavior tree, which drives the logic and task execution of the entire behavior tree. The following are its execution rules:
+Starting from the root node, select the child nodes to execute based on the node type and connection relationship.
+Perform the tick operation on the selected child node and wait for its status to return.
+Based on the return status of the child node, decide which node to execute next.
+If the state of the child node is Running, the node needs to continue executing. In this case, the tick operation will be paused and wait for the next tick operation.
+If the child node returns the "Success" status, it indicates that the node is successfully executed, and the tick operation continues to execute the next node.
+If the child node returns a "Failure" status, it indicates that the node failed to execute, and the tick operation will continue to execute on the next node or backtrack to a higher node.
+Repeat the above steps until the entire behavior tree completes execution or a specific termination condition is encountered.
+
+
+
+From these examples, learn that some robotic actions have dependencies with the actions before and after them.
+The texts above are part of the overall instruction. Do not start working yet:
+
+[assistant]
+Understood. I will wait for further instructions before starting to work.

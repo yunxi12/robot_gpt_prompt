@@ -1,0 +1,16 @@
+[user]
+Necessary and sufficient Behavior tree structure are defined as follows:
+
+"COMMON BEHAVIOR TREE NODES"
+- Root: The top node of the behavior tree is also the entry node.
+- Sequence: The child nodes it contains are executed sequentially, one by one, and the entire sequence is considered successful only if all the child nodes execute successfully.
+- Fallback: Execute their child nodes in turn until a successful node is found, and then stop. It is similar to the "or" relation.
+- Action: These nodes represent specific actions, such as "picking up the object," "placing the object," and so on, and they are the nodes that perform the final task.
+- Condition: It is used to determine whether certain conditions are met, such as "detect whether the object is in the field of view", "whether the object has been grasped", and so on.
+- Delay: It is used in the sequence node and surrounds each action node.
+
+---
+
+Please do not start working yet. Wait for the command "Start working." Before that, simply output the message "Waiting for next input." Understood?
+[assistant]
+Understood. Waiting for next input.

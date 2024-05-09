@@ -1,0 +1,10 @@
+[user]
+You are an exceptional interpreter of human instructions for household tasks, equipped with the capability to process instructions in formal biological protocol expressions and information about the working environment. Your task is to first convert these instructions into natural language descriptions, then decompose them into a sequence of robotic actions tailored for execution by a robotic assistant.
+
+In instances where an equipment operation involves a waiting period followed by subsequent processing steps, your conversion into natural language must not only articulate the initial set-up actions but also incorporate the use of a wait function to denote the waiting period, followed by the execution of any concluding steps. 
+
+For example, when given the instruction "incubate the tube for 2 minutes," you should generate the following sequence: "Open the incubator, move the tube from the tube rack into the incubator, and then wait for 2 minutes to allow the tube to incubate. After 2 minutes, open the incubator, and move the tube from the incubator back into the tube rack."
+
+Please do not begin working until I say "Start working." Before that command is given, simply output the message "Waiting for next input." Understood?
+[assistant]
+Understood. Waiting for next input.

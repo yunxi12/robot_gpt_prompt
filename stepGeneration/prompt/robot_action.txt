@@ -1,0 +1,60 @@
+[user]
+Necessary and sufficient robot actions are defined as follows:
+
+"ROBOT ACTION LIST WITH PARAMETERS AND DETAILED TARGETING"
+
+- grasp_object(hand, object): Use the specified hand (left/right) to grab a specific object. For example, grasp_object(right, ball) means the robot's right hand grasps the ball.
+
+- release_object(hand, object): Use the specified hand (left/right) to release a specific object currently grasped by the hand. For example, release_object(left, book) means the robot's left hand releases the book.
+
+- move_object(hand, object, target_with_position): Move a specific object grabbed by the specified hand (left/right) from one position to a target position, which includes precise location and orientation details. For example, move_object(right, cup, "on the center of the table") means the robot's right hand moves the cup to the center of the table, provided the cup is not constrained by the environment.
+
+- detach_from_plane(hand, object, plane_with_orientation): Move a grabbed object from a state where it is constrained by a plane to a state where it is not, using the specified hand (left/right). For example, detach_from_plane(left, cup, "from the edge of the table") means the robot's left hand detaches the cup from the edge of the table.
+
+- attach_to_plane(hand, object, plane_with_orientation): Attach a grabbed object to a plane using the specified hand (left/right). This is the opposite operation of detach_from_plane(). For example, attach_to_plane(right, plate, "on the corner of the desk") means the robot's right hand places the plate down on the corner of the desk.
+
+- open_by_rotate(hand, object): Open something by rotating a grabbed object that is rotationally constrained by its environment, using the specified hand (left/right). For example, open_by_rotate(left, jar) means the robot's left hand opens a jar by rotating its lid.
+
+- adjust_by_rotate(hand, object): Rotate a grabbed object that is rotationally constrained by its environment, using the specified hand (left/right), to adjust its state. For example, adjust_by_rotate(right, knob) means the robot's right hand adjusts the state of a knob by rotating it.
+
+- close_by_rotate(hand, object): Close something by rotating a grabbed object in the opposite direction of opening, using the specified hand (left/right). For example, close_by_rotate(left, jar) means the robot's left hand closes the jar by rotating its lid in the opposite direction.
+
+- open_by_slide(hand, object): Move a grabbed object that is translationally constrained in two axes from its environment along one unbounded axis, using the specified hand (left/right). For example, open_by_slide(right, drawer) means the robot's right hand opens a drawer by sliding it.
+
+- adjust_by_slide(hand, object): Slide a grabbed object that is translationally constrained in two axes from its environment along one unbounded axis, using the specified hand (left/right), to adjust its position. For example, adjust_by_slide(left, door) means the robot's left hand adjusts the position of a sliding door.
+
+- close_by_slide(hand, object): Close something by sliding a grabbed object in the opposite direction of opening, using the specified hand (left/right). For example, close_by_slide(right, drawer) means the robot's right hand closes a drawer by sliding it in the opposite direction.
+
+- wipe_on_plane(hand, object, plane_with_orientation): Move a grabbed object landing on a plane along two axes on that plane, using the specified hand (left/right). For example, wipe_on_plane(left, sponge, "across the surface of the window") means the robot's left hand wipes the window with a sponge.
+
+- press_object(hand, object): Use the specified hand's (left/right) thumb to press down on a specific object. This action is used to apply downward pressure, for example, press_object(right, button) means the robot's right hand presses down on a button.
+
+- release_thumb_pressure(hand, object): Utilize the specified hand's (left/right) thumb to release pressure from a specific object and lift the thumb away. This action concludes the press sequence by gently easing off the pressure applied by the thumb and returning it to its initial position, ensuring no additional force is exerted on the object.
+
+- stuck_into_object(hand, object, target_with_orientation): Use the specified hand (left/right) to insert an object into a target, connecting them together. For example, stuck_into_object(left, key, "into the keyhole of the lock") means the robot's left hand inserts the key into the lock, aiming to engage or secure them together.
+
+- open_by_unlatch(hand, object): Utilize the specified hand's (left/right) thumb to unlatch and thereby open a box. This action involves carefully manipulating the thumb to apply the precise amount of force and movement needed to disengage the latch of the box without damaging the mechanism or the box itself.
+
+- move_into_something(hand, object, target_with_orientation): Use the specified hand (left/right) to insert an object, specifically a pipette, into an object. This action can only be executed when the something is in an opened state, ensuring that the insertion process does not meet any physical resistance from a closed bottle. The precise movement involves guiding the tube with controlled motion to avoid any damage to the bottle or the tube itself. For example, move_into_bottle(left, tube, "into the neck of the opened water bottle") means the robot's left hand inserts the tube into an opened water bottle.
+
+- move_out_something(hand, object, target_with_orientation): Utilize the specified hand (left/right) to carefully remove an object, specifically a tube, from a bottle referred to by `bottle_name`. This action requires precision and control to ensure the tube is extracted without causing damage to the tube or the bottle. The operation must be performed with an awareness of the bottle's interior and exterior conditions to prevent any spillage or harm during the removal process.
+
+- detach_from_something(hand, object, target_with_orientation): Use the specified hand (left/right) to detach an object from a target, moving them apart. For example, detach_from_something(left, key, "from the lock") means the robot's left hand detaches the key from the lock, aiming to move them apart.
+
+- wait(time): Stop doing everything and wait for a specific time, then continue the forward actions.
+
+- tap_flick_object(hand, object): Use the specified hand (left/right) to gently tap or flick an object, facilitating a light mixing or stirring action without applying excessive force. This action is ideal for handling delicate materials or solutions that require careful agitation to mix. For example, tap_flick_object(right, tube) means the robot's right hand gently taps or flicks a tube to mix the contents inside lightly.
+
+- rock_plate(hand, plate): Use both hands to hold the edges of a plate and gently rock it back and forth. This action ensures a smooth mixing of the plate's contents without spilling or harsh agitation. It's particularly useful for mixing solutions or cultures on a plate by providing a gentle rocking motion. For example, rock_plate(both, petri_dish) indicates the robot uses both hands to rock a petri dish back and forth to mix the contents gently.
+
+- pour_object(hand, from_object, to_object): Use the specified hand (left/right) to carefully pour contents from one object to another. This action requires precise control to avoid spills and ensure the smooth transfer of liquid or small particles from one container to another. For example, pour_object(left, beaker, flask) means the robot's left hand pours the contents from a beaker into a flask.
+
+- rub_objects(hand1, hand2, object1, object2): Use both hands (specifying left or right for each hand) to hold two objects and rub them against each other. This action is often used for cleaning or mixing purposes, such as rubbing two microscope slides together to spread a sample evenly. For example, rub_objects(left, right, slide1, slide2) means the robot uses its left hand to hold slide1 and its right hand to hold slide2, rubbing them together to achieve the desired effect.
+
+It's essential that all actions involving placement or movement relative to another object or surface include specific orientation and positioning details, such as "above the tube rack" instead of just "tube rack," to ensure clarity and precision in execution.
+
+---
+
+Please do not start working yet. Wait for the command "Start working." Before that, simply output the message "Waiting for next input." Understood?
+[assistant]
+Understood. Waiting for next input.

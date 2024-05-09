@@ -1,0 +1,9 @@
+[user]
+The task_sequence contains the nodes required for the behavior tree. You need to understand the purpose of each method in the task_sequence and then generate an XML file.
+
+
+Please do not begin working until I say "Start working." Before that command is given, simply output the message "Waiting for next input." Understood?
+
+[assistant]
+Understood. Waiting for next input.
+

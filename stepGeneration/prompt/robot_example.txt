@@ -1,0 +1,223 @@
+[user]
+I will give you some examples of the input and the output you will generate.
+
+Example 1:
+"""
+- Input:
+{"environment": {"assets": ["<table>", "<tube_rack>", "<tip_box>"],
+                            "asset_states": {"<tip_box>": "on_something(<table>), open()",
+                                             "<tube_rack>": "on_something(<table>)"},
+                            "objects": ["<pipette>", "<tube>", "<pipette_tips>", "<reagent_bottle>"],
+                            "object_states": {"<pipette>": "on_something(<table>, rotatable(), pressable()",
+                                              "<tube>": "in_something(<tube_rack>)",
+                                              "<pipette_tips>": "stuck_in_something(<tip_box>)",
+                                              "<reagent_bottle>": "on_something(<table>), unlatchable()"}},
+ "instruction": "add 10µL reagents into tube using pipette"}
+
+- Output:
+```
+{
+    "task_cohesion": {
+        "task_sequence": [
+            "grasp_object(left, pipette)",
+            "adjust_by_rotate(right, pipette)",
+            "release_object(left, pipette)",
+            "grasp_object(left, reagent_bottle)",
+            "open_by_rotate(right, reagent_bottle)",
+            "grasp_object(left, tip_box)",
+            "open_by_unlatch(right, tip_box)",
+            "grasp_object(right, pipette)",
+            "move_object(right, pipette, above tip_box)",
+            "stuck_into_object(right, pipette, pipette_tips)",
+            "move_object(right, pipette, above reagent_bottle)",
+            "move_into_something(right, pipette, reagent_bottle)",
+            "press_object(right, pipette)",
+            "release_thumb_pressure(right, pipette)",
+            "move_out_something(right, pipette, reagent_bottle)"
+            "move_object(right, pipette, above tube)",
+            "move_into_something(right, pipette, tube)",
+            "press_object(right, pipette)",
+            "release_thumb_pressure(right, pipette)",
+            "move_out_something(right, pipette, tube)",
+            "attach_to_plane(right, pipette, on table)",
+            "release_object(right, pipette)"
+        ],
+        "step_instructions": [
+            "grasp the pipette with the left hand",
+            "set the pipette volume to 10µL by rotating its adjustment knob with the right hand",
+            "release the pipette",
+            "grasp the reagent bottle with the left hand",
+            "open the reagent bottle by rotating its lid with the right hand",
+            "grasp the tip box with the left hand",
+            "open the tip box by unlatch its lid with the right hand",
+            "grasp the pipette with the right hand",
+            "move the pipette to the tip box",
+            "stuck the pipette into the tip in the tip box with right hand",
+            "move the pipette with the attached tip to the reagent bottle with right hand",
+            "move the pipette with the attached tip into the reagent bottle",
+            "press the button of the pipette with right hand thumb",
+            "release the button of the pipette with right hand thumb",
+            "move the pipette with the attached tip out of the reagent bottle",
+            "move the pipette with the attached tip to the tube with right hand",
+            "move the pipette into the tube with right hand",
+            "press the button of the pipette with right hand thumb",
+            "release the button of the pipette with right hand thumb",
+            "move the pipette out of the tube ",
+            "attach the pipette to the table with right hand",
+            "release the pipette with right hand"
+        ]
+    },
+    "environment_before": {
+        "assets": ["<table>", "<tube_rack>", "<tip_box>"],
+        "asset_states": {
+            "<tip_box>": "on_something(<table>), open()", "<tube_rack>": "on_something(<table>)"},
+        "objects": ["<pipette>", "<tube>", "<pipette_tips>", "<reagent_bottle>"],
+        "object_states": {"<pipette>": "on_something(<table>, rotatable(), pressable()",
+                          "<tube>": "in_something(<tube_rack>)", "<pipette_tips>": "stuck_in_something(<tip_box>)",
+                          "<reagent_bottle>": "on_something(<table>), unlatchable()"}},
+    "environment_after": {
+        "assets": ["<table>", "<tube_rack>", "<tip_box>"],
+        "asset_states": {
+            "<tip_box>": "on_something(<table>), open()",
+            "<tube_rack>": "on_something(<table>)"
+        },
+        "objects": ["<pipette>", "<tube>", "<pipette_tips>", "<reagent_bottle>"],
+        "object_states": {
+            "<pipette>": "on_something(<table>)",
+            "<tube>": "inside_something(<tube_rack>), open()",
+            "<pipette_tips>": "attached_to(<pipette>)",
+            "<reagent_bottle>": "on_something(<table>), open()"
+        }
+    },
+    "instruction_summary": "Set pipette volume to 10µL and pipette reagents into tube",
+    "question": ""
+}
+```
+"""
+Example 2:
+"""
+- Input:
+{"environment": {"assets": ["<table>", "<trash_bin>", "<floor>"],
+                            "asset_states": {"<trash_bin>": "on_something(<floor>)"},
+                            "objects": ["<pipette>", "<pipette tip>"],
+                            "object_states": {"<pipette>": "on_something(<table>)",
+                                              "<pipette tip>": "stuck_in_something(<pipette>)"}},
+ "instruction": "discard the used tip on the pipette to the trash bin"}
+
+- Output:
+```
+{
+    "task_cohesion": {
+        "task_sequence": [
+            "grasp_object(right, pipette)",
+            "grasp_object(left, pipette tip)",
+            "detach_from_something(left, pipette tip, pipette)"
+            "release_object(left, pipette tip)"
+        ],
+        "step_instructions": [
+            "Grasp the pipette with the right hand.",
+            "Grasp the pipette tip with the left hand.",
+            "Detach the pipette tip from the pipette with the left hand"
+            "Release the pipette tip into the trash bin."
+        ]
+    },
+    "environment_before": {
+        "assets": ["<table>", "<trash_bin>", "<floor>"],
+        "asset_states": {"<trash_bin>": "on_something(<floor>)"},
+        "objects": ["<pipette>", "<pipette tip>"],
+        "object_states": {
+            "<pipette>": "on_something(<table>)",
+            "<pipette tip>": "stuck_in_something(<pipette>)"
+        }
+    },
+    "environment_after": {
+        "assets": ["<table>", "<trash_bin>", "<floor>"],
+        "asset_states": {"<trash_bin>": "on_something(<floor>)"},
+        "objects": ["<pipette>", "<pipette tip>"],
+        "object_states": {
+            "<pipette>": "on_something(<table>)",
+            "<pipette tip>": "inside_something(<trash_bin>)"
+        }
+    },
+    "instruction_summary": "Discard the used pipette tip into the trash bin.",
+    "question": ""
+}
+```
+"""
+Example 3:
+"""
+- Input:
+{"environment": {"assets": ["<table>", "<incubator>", "<floor>", "<tube_rack>"],
+                            "asset_states": {"<incubator>": "on_something(<floor>), unlatchable()",
+                                             "<tube_rack>": "on_something(<table>)"},
+                            "objects": ["<tube>"],
+                            "object_states": {"<tube>": "stuck_in_something(<tube_rack>)"}},
+ "instruction": "incubate the tube for 2 minutes"}
+
+- Output:
+```
+{
+    "task_cohesion": {
+        "task_sequence": [
+            "open_by_unlatch(right, incubator)",
+            "grasp_object(right, tube)",
+            "move_object(right, tube, above incubator)",
+            "attach_to_plane(right, tube, incubator)",
+            "release_object(right, tube)",
+            "close_by_slide(right, incubator)",
+            "wait(2 minutes)",
+            "open_by_unlatch(right, incubator)",
+            "grasp_object(right, tube)",
+            "move_object(right, tube, above tube_rack)",
+            "attach_to_plane(right, tube, tube_rack)",
+            "release_object(right, tube)",
+            "close_by_slide(right, incubator)"
+        ],
+        "step_instructions": [
+            "Open the incubator by unlatching it with the right hand.",
+            "Grasp the tube with the right hand from the tube rack.",
+            "Move the tube towards the incubator.",
+            "Place the tube inside the incubator, ensuring it is securely positioned.",
+            "Release the tube inside the incubator.",
+            "Close the incubator by sliding its door shut with the right hand.",
+            "wait for 2 minutes.",
+            "Open the incubator by unlatching it with the right hand.",
+            "Grasp the tube with the right hand in the incubator",
+            "Move the tube towards the tube rack.",
+            "Place the tube on the tube rack, ensuring it is securely positioned.",
+            "Release the tube on the tube rack.",
+            "Close the incubator by sliding its door shut with the right hand."
+
+        ]
+    },
+    "environment_before": {
+        "assets": ["<table>", "<incubator>", "<floor>", "<tube_rack>"],
+        "asset_states": {
+            "<incubator>": "on_something(<floor>), closed()",
+            "<tube_rack>": "on_something(<table>)"
+        },
+        "objects": ["<tube>"],
+        "object_states": {
+            "<tube>": "stuck_in_something(<tube_rack>)"
+        }
+    },
+    "environment_after": {
+        "assets": ["<table>", "<incubator>", "<floor>", "<tube_rack>"],
+        "asset_states": {
+            "<trash_bin>": "on_something(<floor>)",
+            "<incubator>": "on_something(<floor>), open()",
+            "<tube_rack>": "on_something(<table>)"
+        },
+        "objects": ["<tube>"],
+        "object_states": {
+            "<tube>": "inside_something(<tube_rack>)"
+        }
+    },
+    "instruction_summary": "Incubate the tube for 2 minutes by first opening the incubator, moving the tube inside, and then closing the incubator. Take it out back to tube rack after incubation",
+    "question": ""
+}
+```
+From these examples, learn that some robotic actions have dependencies with the actions before and after them.
+The texts above are part of the overall instruction. Do not start working yet:
+[assistant]
+Understood. I will wait for further instructions before starting to work.

@@ -1,0 +1,16 @@
+[user]
+"GUIDELINES FOR HAND SELECTION IN ROBOTIC TASK EXECUTION BASED ON HUMAN BEHAVIORAL STANDARDS"
+
+In robotic operations that mimic human actions, the selection between the left and right hand for executing tasks is crucial for optimizing performance and ensuring efficiency. Inspired by human behavioral standards, our system employs a strategic approach in assigning tasks to either hand, especially when it concerns the complexity of actions.
+
+- Principle of Hand Selection: The system shall prioritize the use of the right hand for tasks that are deemed more complex. This decision is based on observations of human behavior, where the majority, being right-handed, tend to use their right hand for tasks requiring higher precision, dexterity, and control. Complex actions include but are not limited to, manipulating intricate objects, performing precise operations, and executing tasks that require significant coordination.
+
+- Left Hand Utilization: The left hand is primarily employed for tasks that are less complex and require less precision, serving as a support role to the right hand. Such tasks might include holding or stabilizing an object while the right hand performs the complex part of the task. This distribution of tasks is designed to mimic human handedness and efficiency, where the left hand assists in positioning, holding, or providing additional support to the primary action performed by the right hand.
+
+- Adaptive Execution Strategy: The system is equipped with an adaptive strategy module that dynamically assesses the complexity of the task at hand and selects the appropriate hand based on the guidelines outlined above.
+
+---
+
+The texts above are part of the overall instruction. Do not start working yet:
+[assistant]
+Understood. Waiting for next input.

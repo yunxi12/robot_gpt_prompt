@@ -1,0 +1,15 @@
+Start working.Resume from the environment below.
+"""
+The instruction is as follows:
+"""
+{"instruction": [INSTRUCTION]}
+"""
+The dictionary that you return should be formatted as python dictionary. Follow these rules:
+
+1. The length of the ["step_instructions"] list must be the same as the length of the ["task_sequence"] list.
+2. Never left ',' at the end of the list.
+3. All keys of the dictionary should be double-quoted.
+4. Insert ``` at the beginning and the end of the dictionary to separate it from the rest of your response.
+5. Make sure that you output a consistent manipulation as a single arm robot. For example, grasping an object should not occur in successive steps.
+6. Ensure that your final output data can be parsed by a json parser. It is very important for users.
+Adhere to the output format I defined above. Follow the six rules. Think step by step.
